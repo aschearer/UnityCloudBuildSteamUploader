@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/6hp8elqmalmko9b7?svg=true)](https://ci.appveyor.com/project/aschearer/unitycloudbuildsteamuploader)
+
 # Unity Cloud Build to Steam Uploader
 I really enjoy using Unity's Cloud Build to create new versions of my game. It lets me focus on adding more features while a build cooks in the background. But uploading the new build still requires manual work on my part. I've got to find the build on Unity's website, download and unzip it, move it to the proper directory for upload, and execute Valve's Steamworks upload script. I just want to stay focused working on my game! 
 
@@ -70,5 +72,5 @@ Credit to Niklas Borglund for his guide detailing how to use Node.js and Gulp to
 
 https://www.lavapotion.com/blog/2017/6/8/connecting-unity-cloud-build-and-hockeyapp-the-slightly-hackish-way
 
-[1]: https://bitbucket.org/spottedzebra/unity-cloud-build-steam-uploader/downloads/UnityCloudBuildSteamUploader.zip
+[1]: https://github.com/aschearer/UnityCloudBuildSteamUploader/releases/latest
 [2]: https://partner.steamgames.com/downloads/steamworks_sdk.zip
