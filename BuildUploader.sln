@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildUploader.Console", "BuildUploader.Console\BuildUploader.Console.csproj", "{E263FC4E-A1C8-444A-8531-5DC231C0029F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FA90DF51-3E07-40BB-8A45-B9C57E6A42C3}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		UnityCloudBuildSteamUploader\Steamworks_SDK\Publish-Build.bat = UnityCloudBuildSteamUploader\Steamworks_SDK\Publish-Build.bat
+		README.md = README.md
+		UnityCloudBuildSteamUploader\Setup-Project.ps1 = UnityCloudBuildSteamUploader\Setup-Project.ps1
+		UnityCloudBuildSteamUploader\Upload-SteamContent.ps1 = UnityCloudBuildSteamUploader\Upload-SteamContent.ps1
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E263FC4E-A1C8-444A-8531-5DC231C0029F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E263FC4E-A1C8-444A-8531-5DC231C0029F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E263FC4E-A1C8-444A-8531-5DC231C0029F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E263FC4E-A1C8-444A-8531-5DC231C0029F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF3055E5-B63F-4D7F-96A4-2E4EDE1444A5}
+	EndGlobalSection
+EndGlobal
