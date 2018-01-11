@@ -14,12 +14,12 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 before_build:
-- ps: nuget restore Source\BuildUploader.sln
+- ps: nuget restore BuildUploader.sln
 build:
   verbosity: minimal
-  project: Source\BuildUploader.sln
+  project: BuildUploader.sln
 after_build:
-- cmd: 7z a UnityCloudBuildSteamUploader.zip "%APPVEYOR_BUILD_FOLDER%\Source\UnityCloudBuildSteamUploader\*"
+- cmd: 7z a UnityCloudBuildSteamUploader.zip "%APPVEYOR_BUILD_FOLDER%\UnityCloudBuildSteamUploader\*"
 artifacts:
 - path: UnityCloudBuildSteamUploader.zip
   name: UnityCloudBuildSteamUploader.zip
