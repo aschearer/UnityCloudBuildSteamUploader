@@ -1,0 +1,25 @@
+version: 0.1.{build}
+branches:
+  only:
+    - master
+  except:
+    - gh-pages
+configuration:
+- Release
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+before_build:
+- ps: nuget restore Source\BuildUploader.sln
+build:
+  verbosity: minimal
+  project: Source\BuildUploader.sln
+after_build:
+- cmd: 7z a UnityCloudBuildSteamUploader.zip "%APPVEYOR_BUILD_FOLDER%\Source\UnityCloudBuildSteamUploader\*"
+artifacts:
+- path: UnityCloudBuildSteamUploader.zip
+  name: UnityCloudBuildSteamUploader.zip
