@@ -15,6 +15,7 @@ The goal of this project is to automate the remaining manual steps. It does that
 ### Getting Your Unity Cloud Build Information ###
 
 You can find your API Key here: https://developer.cloud.unity3d.com/preferences/
+From there, navigate to: Settings > Cloud Build > API Settings > API Key
 
 To get the rest of the information, go to the summary for your most recent build. In the URL you will see the necessary pieces:
 
