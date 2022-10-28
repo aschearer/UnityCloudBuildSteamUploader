@@ -12,7 +12,7 @@ $steamPassword = $config.steam.password
 $steamAppId = $config.steam.app_id
 $steamAppScript = $config.steam.app_script
 $steamExe = $pwd + "\" + $config.steam.exe_path
-$buildDescription = "demo 123"
+$buildDescription = ""
 
 
 # This crazy thing is to make sure ^ and other special characters get through
