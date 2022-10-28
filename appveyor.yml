@@ -14,7 +14,7 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 before_build:
-  - nuget restore
+  - nuget restore BuildUploader.sln
 build:
   verbosity: minimal
   project: BuildUploader.sln
