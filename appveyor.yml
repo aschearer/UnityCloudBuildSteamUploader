@@ -1,23 +1,9 @@
-version: 0.1.{build}
-branches:
-  only:
-    - master
-  except:
-    - gh-pages
-configuration:
-- Release
-platform: Any CPU
-assembly_info:
-  patch: true
-  file: '**\AssemblyInfo.*'
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+version: 1.0.{build}
+image: Visual Studio 2022
 before_build:
-  - nuget restore BuildUploader.sln
+- ps: nuget restore BuildUploader.sln
 build:
   verbosity: minimal
-  project: BuildUploader.sln
 after_build:
 - cmd: 7z a UnityCloudBuildSteamUploader.zip "%APPVEYOR_BUILD_FOLDER%\UnityCloudBuildSteamUploader\*"
 artifacts:
