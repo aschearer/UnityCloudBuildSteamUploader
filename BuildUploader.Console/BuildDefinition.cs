@@ -2,6 +2,8 @@
 {
     internal class BuildDefinition
     {
+        public string BuildTarget;
+
         public int BuildNumber;
 
         public string FileName;

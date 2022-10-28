@@ -61,7 +61,7 @@ namespace BuildUploader.Console
                     var successfullyDownloadedBuild = DownloadUnityCloudBuild(buildConfig.SteamSettings, latestBuild);
                     if (successfullyDownloadedBuild)
                     {
-                        bool success = UploadBuildToSteamworks(buildConfig.SteamSettings);
+                        bool success = UploadBuildToSteamworks(buildConfig.SteamSettings, latestBuild);
                         TryNotifySlack(buildConfig.SteamSettings, latestBuild, success);
                     }
                 }
@@ -87,18 +87,20 @@ namespace BuildUploader.Console
                 if (success)
                 {
                     payload = string.Format(
-                        "{0} build {1:N0} has been uploaded to the {2} branch on Steam.",
+                        "{0} build {1} {2} has been uploaded to the Steam {3}.",
                         steamSettings.DisplayName,
+                        latestBuild.BuildTarget,
                         latestBuild.BuildNumber,
-                       steamSettings.BranchName ?? "default");
+                        steamSettings.BranchName ?? "default");
                 }
                 else
                 {
                     payload = string.Format(
-                        "Failed to upload {0} build {1:N0} to Steam.",
+                        "Failed to upload {0} build {1} {2} to Steam {3}.",
                         steamSettings.DisplayName,
+                        latestBuild.BuildTarget,
                         latestBuild.BuildNumber,
-                       steamSettings.BranchName ?? "default");
+                        steamSettings.BranchName ?? "default");
                 }
 
                 var message = @"{""text"": """ + payload + @"""}";
@@ -113,18 +115,20 @@ namespace BuildUploader.Console
             }
         }
 
-        private static bool UploadBuildToSteamworks(SteamSettings steamSettings)
+        private static bool UploadBuildToSteamworks(SteamSettings steamSettings, BuildDefinition latestBuild)
         {
+            var buildDescription = string.Format("{0} {1}", latestBuild.BuildTarget, latestBuild.BuildNumber);
             var steamworksDir = ConfigurationSettings.AppSettings["STEAMWORKS_DIRECTORY"];
             Trace.TraceInformation("Invoking Steamworks SDK to upload build");
             string command = string.Format(
-                @"{0}\Publish-Build.bat {1} ""{2}"" {3} {4} ""{5}""",
+                @"{0}\Publish-Build.bat {1} ""{2}"" {3} {4} ""{5}"" ""{6}""",
                 steamworksDir,
                 steamSettings.Username,
                 steamSettings.Password,
                 steamSettings.AppId,
                 steamSettings.AppScript,
-                Environment.CurrentDirectory + "\\" + steamSettings.ExecutablePath);
+                Environment.CurrentDirectory + "\\" + steamSettings.ExecutablePath,
+                buildDescription);
 
             int exitCode;
             ProcessStartInfo processInfo;
@@ -242,6 +246,7 @@ namespace BuildUploader.Console
                         latestBuildNumber = buildNumber;
                         latestBuild = new BuildDefinition()
                         {
+                            BuildTarget = build.buildtargetid,
                             BuildNumber = build.build,
                             DownloadUrl = build.links.download_primary.href,
                             FileName = build.build + "_" + cloudBuildSettings.ProjectName + "_" + build.buildtargetid + '.' + build.links.download_primary.meta.type,

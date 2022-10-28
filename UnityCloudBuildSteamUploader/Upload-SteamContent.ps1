@@ -12,6 +12,7 @@ $steamPassword = $config.steam.password
 $steamAppId = $config.steam.app_id
 $steamAppScript = $config.steam.app_script
 $steamExe = $pwd + "\" + $config.steam.exe_path
+$buildDescription = "demo 123"
 
 
 # This crazy thing is to make sure ^ and other special characters get through
@@ -21,4 +22,4 @@ $passArg = @"
 
 Write-Host "Invoking Steamworks SDK"
 
-& ".\Steamworks_SDK\Publish-Build.bat" $steamUsername $passArg $steamAppId $steamAppScript $steamExe
+& ".\Steamworks_SDK\Publish-Build.bat" $steamUsername $passArg $steamAppId $steamAppScript $steamExe $buildDescription 
