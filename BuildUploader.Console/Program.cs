@@ -87,7 +87,7 @@ namespace BuildUploader.Console
                 if (success)
                 {
                     payload = string.Format(
-                        "{0} build {1} {2} has been uploaded to the Steam {3}.",
+                        "{0} build `{1} {2}` has been uploaded to the Steam `{3}`.",
                         steamSettings.DisplayName,
                         latestBuild.BuildTarget,
                         latestBuild.BuildNumber,
@@ -96,7 +96,7 @@ namespace BuildUploader.Console
                 else
                 {
                     payload = string.Format(
-                        "Failed to upload {0} build {1} {2} to Steam {3}.",
+                        "Failed to upload {0} build `{1} {2}` to Steam `{3}`.",
                         steamSettings.DisplayName,
                         latestBuild.BuildTarget,
                         latestBuild.BuildNumber,
